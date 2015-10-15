@@ -1,0 +1,16 @@
+= form_for @visit do |f|
+  = fields_for :visitor do |visitor|
+    .field
+      = visitor.label :first_name
+      = visitor.text_field :first_name
+
+    .field
+      = visitor.label :last_name
+      = visitor.text_field :last_name
+
+  = fields_for :host do |host|
+    .field
+      = host.label :id, "Who are you here to see?"
+      = host.select :id, @hosts
+
+  = f.submit "Submit"

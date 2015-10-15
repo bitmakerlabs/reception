@@ -11,11 +11,12 @@ class Visit < ActiveRecord::Base
     client = Slack::Web::Client.new
     message_payload = {
       channel: "#reception",
-      text: "#{visitor.name} is here to see @#{host.slack_handle} #{visitor.photo.url}",
+      text: "#{visitor.name} is here to see @#{host.slack_handle}",
       username: "Receptionist",
+      link_names: true,
       attachments: [
-        { image_url: visitor.photo.url }
-      ]
+        { fallback: "Visitor Mugshot", image_url: visitor.photo.url }
+      ].to_json
     }
     client.chat_postMessage(message_payload)
   end

@@ -14,7 +14,14 @@ class VisitsController < ApplicationController
     @visit.visitor.photo = photo
 
     if @visit.save
-      redirect_to root_path, notice: "Your visit has been recorded."
+      client = Slack::Web::Client.new
+      client.chat_postMessage(
+        channel: "#reception",
+        text: "#{@visit.visitor.name} is here to see @#{@visit.host.slack_handle}",
+        username: "Receptionist"
+      )
+
+      redirect_to root_path, notice: "Thank you, #{@visit.visitor.name}. Your visit has been recorded."
     else
       render :new
     end

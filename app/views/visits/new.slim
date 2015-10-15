@@ -1,5 +1,6 @@
 = form_for @visit do |f|
   = f.fields_for :visitor do |visitor_form|
+    = visitor_form.hidden_field :photo
     .field
       = visitor_form.label :first_name
       = visitor_form.text_field :first_name
@@ -11,5 +12,14 @@
   .field
     = f.label :host_id, "Who are you here to see?"
     = f.select :host_id, @hosts
+
+  .camera
+    video#video
+      | Video stream not available.
+    button#startbutton
+      | Take photo
+  canvas#canvas
+  .output
+    img#photo_preview[alt="The screen capture will appear in this box."]
 
   = f.submit "Submit"

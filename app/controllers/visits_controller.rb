@@ -9,6 +9,10 @@ class VisitsController < ApplicationController
   def create
     @visit = Visit.new(visit_params)
 
+    photo = Paperclip.io_adapters.for(visit_params[:visitor_attributes][:photo])
+    photo.original_filename = 'photo.png'
+    @visit.visitor.photo = photo
+
     if @visit.save
       redirect_to root_path, notice: "Your visit has been recorded."
     else
@@ -18,6 +22,6 @@ class VisitsController < ApplicationController
 
   private
   def visit_params
-    params.require(:visit).permit(:host_id, visitor_attributes: [:first_name, :last_name])
+    params.require(:visit).permit(:host_id, visitor_attributes: [:first_name, :last_name, :photo])
   end
 end

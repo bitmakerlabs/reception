@@ -4,6 +4,8 @@ class Visit < ActiveRecord::Base
 
   accepts_nested_attributes_for :visitor
 
+  validates :host_id, presence: true
+
   after_save :notify_slack
 
   private

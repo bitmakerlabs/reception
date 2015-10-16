@@ -1,3 +1,10 @@
+- if @visit.errors.any?
+  #error_explanation
+    ul
+    - @visit.errors.full_messages.each do |msg|
+      li
+        = msg
+
 = form_for @visit do |f|
   = f.fields_for :visitor do |visitor_form|
     = visitor_form.hidden_field :photo

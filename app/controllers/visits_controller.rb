@@ -1,9 +1,10 @@
 class VisitsController < ApplicationController
+  before_filter :load_hosts, only: [:new, :create]
+
   def new
     @visit = Visit.new
     @visit.build_visitor
     @visit.build_host
-    @hosts = Host.all.collect { |host| [ host.name, host.id] }
   end
 
   def create
@@ -23,5 +24,9 @@ class VisitsController < ApplicationController
   private
   def visit_params
     params.require(:visit).permit(:host_id, visitor_attributes: [:first_name, :last_name, :photo])
+  end
+
+  def load_hosts
+    @hosts = Host.all.collect { |host| [ host.name, host.id] }
   end
 end

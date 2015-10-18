@@ -211,7 +211,6 @@ PLATFORMS
 DEPENDENCIES
   bulk_insert
   byebug
-  coffee-rails (~> 4.1.0)
   dotenv-rails
   fog-aws
   jbuilder (~> 2.0)

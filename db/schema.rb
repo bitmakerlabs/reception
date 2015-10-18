@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015015454) do
+ActiveRecord::Schema.define(version: 20151018134058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20151015015454) do
     t.string   "slack_handle"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "slack_id",     null: false
   end
+
+  add_index "hosts", ["slack_id"], name: "index_hosts_on_slack_id", unique: true, using: :btree
 
   create_table "visitors", force: :cascade do |t|
     t.string   "first_name"
@@ -37,9 +40,9 @@ ActiveRecord::Schema.define(version: 20151015015454) do
 
   create_table "visits", force: :cascade do |t|
     t.integer  "visitor_id"
-    t.integer  "host_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "host_slack_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

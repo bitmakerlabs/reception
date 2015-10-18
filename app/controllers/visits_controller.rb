@@ -23,10 +23,6 @@ class VisitsController < ApplicationController
 
   private
   def visit_params
-    params.require(:visit).permit(:host_id, visitor_attributes: [:first_name, :last_name, :photo])
-  end
-
-  def load_hosts
-    @hosts = Host.all.collect { |host| [ host.name, host.id] }
+    params.require(:visit).permit(:host_slack_id, visitor_attributes: [:first_name, :last_name, :photo])
   end
 end

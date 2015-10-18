@@ -17,8 +17,8 @@
       = visitor_form.text_field :last_name
 
   .field
-    = f.label :host_id, "Who are you here to see?"
-    = f.select :host_id, @hosts
+    = f.label :host_slack_id, "Who are you here to see?"
+    = f.select :host_slack_id, @hosts
 
   .camera
     video#video

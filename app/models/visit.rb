@@ -1,10 +1,10 @@
 class Visit < ActiveRecord::Base
   belongs_to :visitor
-  belongs_to :host
+  belongs_to :host, primary_key: 'slack_id', foreign_key: 'host_slack_id'
 
   accepts_nested_attributes_for :visitor
 
-  validates :host_id, presence: true
+  validates :host_slack_id, presence: true
 
   after_save :notify_slack
 

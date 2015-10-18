@@ -13,12 +13,13 @@ namespace :slack do
       [
         m["profile"]["first_name"],
         m["profile"]["last_name"],
+        m["id"],
         m["name"]
       ]
     end
 
     Host.destroy_all
-    Host.bulk_insert(:first_name, :last_name, :slack_handle, :created_at, :updated_at) do |worker|
+    Host.bulk_insert(:first_name, :last_name, :slack_id, :slack_handle, :created_at, :updated_at) do |worker|
       members.each do |member|
         worker.add member
       end

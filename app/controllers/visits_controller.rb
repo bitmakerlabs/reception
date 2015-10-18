@@ -1,5 +1,6 @@
 class VisitsController < ApplicationController
-  before_filter :load_hosts, only: [:new, :create]
+  before_filter :load_hosts, only: [:new, :create],
+    unless: ->(controller) { controller.request.format.json? }
 
   def new
     @visit = Visit.new
@@ -14,10 +15,18 @@ class VisitsController < ApplicationController
     photo.original_filename = 'photo.png'
     @visit.visitor.photo = photo
 
-    if @visit.save
-      redirect_to root_path, notice: "Thank you, #{@visit.visitor.name}. Your visit has been recorded."
-    else
-      render :new
+    respond_to do |format|
+      format.html do
+        if @visit.save
+          redirect_to root_path, notice: "Thank you, #{@visit.visitor.name}. Your visit has been recorded."
+        else
+          render :new
+        end
+      end
+      format.json do
+        @visit.save
+        render json: @visit
+      end
     end
   end
 

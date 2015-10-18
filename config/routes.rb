@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :visits
+  resources :visits, only: [:new, :create]
+  resources :hosts, only: [:index]
 
   root 'visits#new'
 

@@ -40,7 +40,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    bulk_insert (1.0.0)
+    bulk_insert (1.1.0)
       activerecord (~> 4.2.2)
     byebug (6.0.2)
     climate_control (0.0.3)

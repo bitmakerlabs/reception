@@ -9,14 +9,19 @@ namespace :slack do
       return
     end
 
-    members = users_list["members"].reject { |m| m["deleted"] }.collect do |m|
+    members = users_list["members"].reject { |m|
+      m["deleted"] ||
+      m["profile"].nil? ||
+      m["profile"]["first_name"].nil? ||
+      m["profile"]["last_name"].nil?
+    }.collect { |m|
       [
         m["profile"]["first_name"],
         m["profile"]["last_name"],
         m["id"],
         m["name"]
       ]
-    end
+    }
 
     Host.destroy_all
     Host.bulk_insert(:first_name, :last_name, :slack_id, :slack_handle, :created_at, :updated_at) do |worker|

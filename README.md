@@ -4,6 +4,10 @@ Imagine you are visiting a brick'n'mortar office of some organization. Imagine t
 
 Reception is a Rails application for persisting visitor data and is a companion web service for the [Reception iOS App](https://github.com/bitmakerlabs/reception-react-native)
 
+## _Help Wanted_
+
+If you would like to get involved in development, check out the TODO at the bottom, fork the repo, create a branch, open a pull request.
+
 ## Slack integration
 
 We are using the `slack-ruby-client` gem to communicate with the Slack Web API.
@@ -24,6 +28,10 @@ Visitor photos are stored in AWS S3.
 
 Get the public and secret key from AWS and make them available to the Rails app via the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables.
 The bucket name should be set in `S3_BUCKET_NAME`.
+
+## TODO
+
+* Add tests
 
 ## LICENSE and COPYRIGHT
 

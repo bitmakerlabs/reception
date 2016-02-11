@@ -13,7 +13,8 @@ namespace :slack do
       m["deleted"] ||
       m["profile"].nil? ||
       m["profile"]["first_name"].nil? ||
-      m["profile"]["last_name"].nil?
+      m["profile"]["last_name"].nil? ||
+      m["id"] == "USLACKBOT"
     }.collect { |m|
       [
         m["profile"]["first_name"],

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Host < ActiveRecord::Base
   self.primary_key = 'slack_id'
 

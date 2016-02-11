@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Visit < ActiveRecord::Base
   belongs_to :visitor
   belongs_to :host, primary_key: 'slack_id', foreign_key: 'host_slack_id'

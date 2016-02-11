@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitsController < ApplicationController
   before_filter :load_hosts, only: [:new, :create],
     unless: ->(controller) { controller.request.format.json? }

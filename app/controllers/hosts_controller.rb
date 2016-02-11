@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HostsController < ApplicationController
   before_filter :load_hosts, only: [:index]
 

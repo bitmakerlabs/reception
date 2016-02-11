@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Visitor < ActiveRecord::Base
   has_many :visits
   has_many :hosts, through: :visits

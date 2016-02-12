@@ -89,6 +89,7 @@ GEM
     gli (2.13.4)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hashie (3.4.3)
     i18n (0.7.0)
     ipaddress (0.8.0)
     jbuilder (2.3.2)
@@ -169,10 +170,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    slack-ruby-client (0.5.3)
+    slack-ruby-client (0.6.0)
       faraday
       faraday_middleware
       gli
+      hashie
       json
       websocket-driver
     slim (3.0.6)
